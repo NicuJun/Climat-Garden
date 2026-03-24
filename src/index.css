@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: #f2f7f5;
+    color: #0d2624;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* All headings — Manrope heavy */
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f2f7f5; }
+::-webkit-scrollbar-thumb { background: #3a7d7a; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #2c6460; }
+::selection { background: #22c55e22; color: #0d2624; }
+
+/* Prevent sticky header from covering scroll targets */
+section[id], div[id] {
+  scroll-margin-top: 80px;
+}
